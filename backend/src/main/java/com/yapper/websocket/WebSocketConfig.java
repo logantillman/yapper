@@ -18,8 +18,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        // TODO: Endpoint should be host server id??
-        registry.addEndpoint("/id");
+        registry.addEndpoint("/channels");
     }
 
 }

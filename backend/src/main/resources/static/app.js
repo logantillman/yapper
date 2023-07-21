@@ -1,13 +1,13 @@
 const stompClient = new StompJs.Client({
-    brokerURL: 'ws://localhost:8080/id'
+    brokerURL: 'ws://localhost:8080/channels'
 });
 
 stompClient.onConnect = (frame) => {
     setConnected(true);
     console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/id', (greeting) => {
-        showGreeting(JSON.parse(greeting.body).content);
-    });
+//    stompClient.subscribe('/channels', (greeting) => {
+//        showGreeting(JSON.parse(greeting.body).content);
+//    });
 };
 
 stompClient.onWebSocketError = (error) => {
@@ -31,6 +31,15 @@ function setConnected(connected) {
     $("#greetings").html("");
 }
 
+var subscribedChannel = null;
+function subscribe(channel) {
+this.subscribedChannel = channel;
+    stompClient.subscribe('/topic/' + channel, (greeting) => {
+        showGreeting(JSON.parse(greeting.body).content);
+    });
+    console.log("subscribed to", channel);
+}
+
 function connect() {
     console.log("trying to connect");
     stompClient.activate();
@@ -42,8 +51,9 @@ function disconnect() {
     console.log("Disconnected");
 }
 
+
 function sendName() {
-    var des = $("#name").val() == "hi" ? 'id' : 'rando';
+    var des = this.subscribedChannel;
     console.log(des);
     stompClient.publish({
         destination: "/app/" + des,

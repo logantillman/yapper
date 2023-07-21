@@ -12,8 +12,8 @@ import org.springframework.web.util.HtmlUtils;
 @Controller
 public class ChatController {
 
-    @MessageMapping("/{serverId}") // Wildcard routing. We want all sent messages to be handled the same
-    @SendTo("/topic/{serverId}") // Unique for server??
+    @MessageMapping("/{serverId}")
+    @SendTo("/topic/{serverId}")
     public Message chat(@DestinationVariable String serverId, Message message) throws InterruptedException {
         return new Message(HtmlUtils.htmlEscape(message.getContent()));
     }
