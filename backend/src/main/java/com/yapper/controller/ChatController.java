@@ -1,6 +1,6 @@
 package com.yapper.controller;
 
-import com.yapper.message.Message;
+import com.yapper.pojo.Message;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
