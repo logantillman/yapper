@@ -1,13 +1,13 @@
-//package com.yapper.yapper;
-//
-//import org.junit.jupiter.api.Test;
-//import org.springframework.boot.test.context.SpringBootTest;
-//
-//@SpringBootTest
-//class YapperApplicationTests {
-//
-//	@Test
-//	void contextLoads() {
-//	}
-//
-//}
+package com.yapper.yapper;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class YapperApplicationTests {
+
+	@Test
+	void contextLoads() {
+	}
+
+}
